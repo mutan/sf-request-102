@@ -21,6 +21,3 @@ logs:
 
 migrate:
 	$(docker-compose) run --rm php-fpm bin/console doctrine:migrations:migrate --no-interaction
-
-container-php:
-	docker container exec -it app-php-fpm bash
