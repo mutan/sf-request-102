@@ -1,6 +1,6 @@
 .DEFAULT_GOAL := defaultntainer
 
-docker-compose := docker-compose -f docker-compose.yml
+docker-compose := docker-compose -f docker-compose.yml -f docker-compose.override.yml
 
 default:
 	@echo "make up"
