@@ -1,0 +1,33 @@
+version: "3.7"
+
+networks:
+    app-network:
+        name: app-network
+
+services:
+    php-cli:
+        container_name: app-php-cli
+        image: app:php-cli
+        build:
+            context: ..
+            dockerfile: docker/php/Dockerfile
+            args:
+                PUID: $PUID
+                PGID: $PGID
+                PHP_VERSION: $PHP_VERSION
+                COMPOSER_VERSION: $COMPOSER_VERSION
+                PHP_TYPE: cli
+                GITHUB_TOKEN: $GITHUB_TOKEN
+            target: dev
+        env_file:
+            - .env
+        working_dir: /srv
+        volumes:
+            - ..:/srv
+            - ./php/php.ini:/usr/local/etc/php/conf.d/zz-overrides.ini
+            - $HOME/.composer/cache:/home/dev/.composer/cache
+        networks:
+            - app-network
+
+volumes:
+    php_dev_archive_volume:
