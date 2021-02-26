@@ -1,0 +1,43 @@
+<?php
+
+declare(strict_types=1);
+
+$finder = PhpCsFixer\Finder::create()
+    ->in(__DIR__)
+    ->exclude(['var', 'vendor', 'migrations'])
+;
+
+$config = new PhpCsFixer\Config();
+
+return $config
+    ->setRiskyAllowed(true)
+    ->setRules([
+        '@Symfony' => true,
+        '@Symfony:risky' => true,
+        '@PHP71Migration' => true,
+        'array_indentation' => true,
+        'array_syntax' => [
+            'syntax' => 'short'
+        ],
+        'class_attributes_separation' => [
+            'elements' => [
+                'method' => 'one',
+                'property' => 'one'
+            ]
+        ],
+        'declare_strict_types' => true,
+        'dir_constant' => true,
+        'list_syntax' => [
+            'syntax' => 'short'
+        ],
+        'no_superfluous_phpdoc_tags' => false,
+        'no_useless_else' => true,
+        'phpdoc_align' => [
+            'align' => 'left'
+        ],
+        'phpdoc_order' => true,
+        'protected_to_private' => false,
+        'void_return' => true,
+    ])
+    ->setFinder($finder)
+;
