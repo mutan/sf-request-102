@@ -1,5 +1,5 @@
 
-* [PHP CS Fixer](docs/cs-fixer.md)
+* [PHP CS Fixer](doc/cs-fixer.md)
 
 ***
 
