@@ -1,8 +1,8 @@
 <?php
 
+declare(strict_types=1);
 
 namespace App\Validator\Constraints;
-
 
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
@@ -11,7 +11,7 @@ use Symfony\Component\Validator\Exception\UnexpectedValueException;
 
 class AlphanumericPasswordValidator extends ConstraintValidator
 {
-    public function validate($value, Constraint $constraint)
+    public function validate($value, Constraint $constraint): void
     {
         if (!$constraint instanceof SpecialCharacterPassword) {
             throw new UnexpectedTypeException($constraint, SpecialCharacterPassword::class);
@@ -23,14 +23,14 @@ class AlphanumericPasswordValidator extends ConstraintValidator
             return;
         }
 
-        if (!is_string($value)) {
+        if (!\is_string($value)) {
             // throw this exception if your validator cannot handle the passed type so that it can be marked as invalid
             throw new UnexpectedValueException($value, 'string');
         }
 
-        if (!preg_match('/[0-9]/', $value, $matches) || # number
-            !preg_match('/[a-z]/', $value, $matches) || # lowercase character
-            !preg_match('/[A-Z]/', $value, $matches)    # uppercase character
+        if (!preg_match('/[0-9]/', $value, $matches) || // number
+            !preg_match('/[a-z]/', $value, $matches) || // lowercase character
+            !preg_match('/[A-Z]/', $value, $matches)    // uppercase character
         ) {
             $this->context->buildViolation($constraint->message)
                 ->addViolation();

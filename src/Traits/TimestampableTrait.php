@@ -1,14 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Traits;
 
 use DateTime;
 use DateTimeInterface;
-use Exception;
 use Doctrine\ORM\Mapping as ORM;
+use Exception;
 
 /**
- * !!! Don't forget to add into entity class notation: @ORM\HasLifecycleCallbacks
+ * !!! Don't forget to add into entity class notation: @ORM\HasLifecycleCallbacks.
  */
 trait TimestampableTrait
 {
@@ -30,6 +32,7 @@ trait TimestampableTrait
     public function setCreatedAt(?DateTimeInterface $createdAt): self
     {
         $this->createdAt = $createdAt;
+
         return $this;
     }
 
@@ -41,12 +44,14 @@ trait TimestampableTrait
     public function setUpdatedAt(?DateTimeInterface $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
+
         return $this;
     }
 
     /**
      * @ORM\PrePersist
      * @ORM\PreUpdate
+     *
      * @throws Exception
      */
     public function updateTimestamps(): self
@@ -55,6 +60,7 @@ trait TimestampableTrait
         if (null === $this->getCreatedAt()) {
             $this->setCreatedAt(new DateTime());
         }
+
         return $this;
     }
 }

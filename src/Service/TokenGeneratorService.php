@@ -1,19 +1,28 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Service;
+
+use Exception;
+use InvalidArgumentException;
+use RuntimeException;
 
 class TokenGeneratorService
 {
-    public const CHAR_LOWER   = 1;
-    public const CHAR_UPPER   = 2;
+    public const CHAR_LOWER = 1;
+    public const CHAR_UPPER = 2;
     public const CHAR_NUMERIC = 4;
     public const CHAR_SPECIAL = 8;
 
     /**
-     * Generate string consisted of only lowercase, uppercase characters and numbers
+     * Generate string consisted of only lowercase, uppercase characters and numbers.
+     *
      * @param int $length
-     * @return string
+     *
      * @throws Exception
+     *
+     * @return string
      */
     public function getToken(int $length): string
     {
@@ -21,25 +30,31 @@ class TokenGeneratorService
     }
 
     /**
-     * Generate string consisted of only hexadecimal characters [0-9a-f]
+     * Generate string consisted of only hexadecimal characters [0-9a-f].
+     *
      * @param int $length
-     * @return string
+     *
      * @throws Exception
+     *
+     * @return string
      */
     public function getHexadecimalToken(int $length = 10): string
     {
         if ($length > 64 || $length < 1) {
-            throw new \InvalidArgumentException('Length must be an integer between 1 and 64');
+            throw new InvalidArgumentException('Length must be an integer between 1 and 64');
         }
 
         return substr(bin2hex(random_bytes((int) ceil($length / 2))), 0, $length);
     }
 
     /**
-     * Generate password consisted of minimum one of each characters: lowercase, uppercase and number
+     * Generate password consisted of minimum one of each characters: lowercase, uppercase and number.
+     *
      * @param int $length
-     * @return string
+     *
      * @throws Exception
+     *
+     * @return string
      */
     public function getPassword(int $length): string
     {
@@ -52,13 +67,15 @@ class TokenGeneratorService
      * @param $upper
      * @param $numeric
      * @param $special
-     * @return string
+     *
      * @throws Exception
+     *
+     * @return string
      */
     public function getCustomPassword(int $length, int $lower, int $upper, int $numeric, int $special): string
     {
         if ($length < $lower + $upper + $numeric + $special) {
-            throw new Exception('Length can not be less then sum of characters');
+            throw new RuntimeException('Length can not be less then sum of characters');
         }
 
         $characters = '';
@@ -80,11 +97,11 @@ class TokenGeneratorService
             $flags += self::CHAR_SPECIAL;
         }
 
-        if ($length - strlen($characters)) {
+        if ($length - \strlen($characters)) {
             if (!$flags) {
                 $flags = self::CHAR_LOWER | self::CHAR_UPPER | self::CHAR_NUMERIC | self::CHAR_SPECIAL;
             }
-            $characters .= $this->getCustomToken($length - strlen($characters), $flags);
+            $characters .= $this->getCustomToken($length - \strlen($characters), $flags);
         }
 
         return str_shuffle($characters);
@@ -93,16 +110,19 @@ class TokenGeneratorService
     /**
      * @param int $length
      * @param $flags
-     * @return string
+     *
      * @throws Exception
+     *
+     * @return string
      */
     public function getCustomToken(int $length, $flags): string
     {
-        $token = "";
+        $token = '';
         $characters = $this->getCharacters($flags);
-        for ($i = 0; $i < $length; $i++) {
-            $token .= $characters[\random_int(0, \strlen($characters) - 1)];
+        for ($i = 0; $i < $length; ++$i) {
+            $token .= $characters[random_int(0, \strlen($characters) - 1)];
         }
+
         return $token;
     }
 
@@ -121,6 +141,7 @@ class TokenGeneratorService
         if ($flags & self::CHAR_SPECIAL) {
             $characters .= '+-_=!#$%&?@~';
         }
+
         return $characters;
     }
 }

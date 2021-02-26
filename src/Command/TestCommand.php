@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Command;
 
 use Symfony\Component\Console\Command\Command;
@@ -12,9 +14,10 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 class TestCommand extends Command
 {
     protected static $defaultName = 'app:test';
+
     protected static $defaultDescription = 'Add a short description for your command';
 
-    protected function configure()
+    protected function configure(): void
     {
         $this
             ->setDescription(self::$defaultDescription)
