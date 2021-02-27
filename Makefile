@@ -3,9 +3,14 @@
 dockerdir := docker
 docker-compose := docker-compose --env-file=$(dockerdir)/.env -f $(dockerdir)/docker-compose.yml
 php-cli-compose := docker-compose --env-file=$(dockerdir)/.env -f $(dockerdir)/php-cli-docker-compose.yml
+php-cli-compose-run := $(php-cli-compose) run --rm php-cli
 
 default:
 	@echo "make up"
+
+# Example: make run bash
+run:
+	@$(php-cli-compose-run) $(filter-out $@,$(MAKECMDGOALS))
 
 up:
 	@make down

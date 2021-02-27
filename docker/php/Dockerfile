@@ -41,6 +41,10 @@ RUN echo "${USER} ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
 USER ${USER}
 
+# Gihub token
+#ARG GITHUB_TOKEN
+#RUN composer config --global --auth github-oauth.github.com ${GITHUB_TOKEN}
+
 # Symfony CLI
 RUN wget https://get.symfony.com/cli/installer -O - | sudo bash && sudo mv /root/.symfony/bin/symfony /usr/local/bin/symfony
 
