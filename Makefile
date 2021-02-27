@@ -1,27 +1,32 @@
-.DEFAULT_GOAL := defaultntainer
+.DEFAULT_GOAL := default
 
 dockerdir := docker
 docker-compose := docker-compose --env-file=$(dockerdir)/.env -f $(dockerdir)/docker-compose.yml
-cli-compose := docker-compose --env-file=$(dockerdir)/.env -f $(dockerdir)/php-cli-docker-compose.yml
+php-cli-compose := docker-compose --env-file=$(dockerdir)/.env -f $(dockerdir)/php-cli-docker-compose.yml
 
 default:
 	@echo "make up"
 
 up:
 	@make down
-	$(docker-compose) build
+	@make build
 	$(docker-compose) up -d --remove-orphans
-	$(cli-compose) build
-	$(cli-compose) up -d --remove-orphans
-
-rebuild:
-	$(docker-compose) build --pull --no-cache
+	$(php-cli-compose) up -d
 
 down:
 	$(docker-compose) down
+	$(php-cli-compose) down
+
+build:
+	$(docker-compose) build
+	$(php-cli-compose) build
+
+rebuild:
+	$(docker-compose) build --pull --no-cache
+	$(php-cli-compose) build --pull --no-cache
 
 logs:
 	$(docker-compose) logs -f
 
 migrate:
-	$(docker-compose) run --rm php-fpm bin/console doctrine:migrations:migrate --no-interaction
+	$(php-cli-compose) run --rm php-fpm bin/console doctrine:migrations:migrate --no-interaction
