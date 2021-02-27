@@ -16,7 +16,7 @@
 /phpunit.xml
 ###< symfony/phpunit-bridge ###
 
-docker-compose.override.yml
+docker/docker-compose.override.yml
 
 ###> friendsofphp/php-cs-fixer ###
 /.php_cs

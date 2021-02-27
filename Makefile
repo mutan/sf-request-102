@@ -1,6 +1,8 @@
 .DEFAULT_GOAL := defaultntainer
 
-docker-compose := docker-compose -f docker-compose.yml -f docker-compose.override.yml
+dockerdir := docker
+docker-compose := docker-compose --env-file=$(dockerdir)/.env -f $(dockerdir)/docker-compose.yml
+cli-compose := docker-compose --env-file=$(dockerdir)/.env -f $(dockerdir)/php-cli-docker-compose.yml
 
 default:
 	@echo "make up"
@@ -9,6 +11,8 @@ up:
 	@make down
 	$(docker-compose) build
 	$(docker-compose) up -d --remove-orphans
+	$(cli-compose) build
+	$(cli-compose) up -d --remove-orphans
 
 rebuild:
 	$(docker-compose) build --pull --no-cache

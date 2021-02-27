@@ -11,8 +11,8 @@ services:
         image: nginx:1.19.4
         restart: on-failure
         volumes:
-            - ./:/srv
-            - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+            - ../:/srv
+            - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
         ports:
             - 8001:80
         networks:
@@ -20,14 +20,23 @@ services:
 
     php-fpm:
         container_name: app-php-fpm
+        image: app:php-fpm
         build:
-            context: ./docker/php-fpm/
-        image: php-fpm:app
+            context: ..
+            dockerfile: docker/php/Dockerfile
+            args:
+                PUID: $PUID
+                PGID: $PGID
+                PHP_VERSION: $PHP_VERSION
+                COMPOSER_VERSION: $COMPOSER_VERSION
+                PHP_TYPE: fpm
+                GITHUB_TOKEN: $GITHUB_TOKEN
+            target: dev
         restart: on-failure
         environment:
             APP_ENV: dev
         volumes:
-            - ./:/srv
+            - ../:/srv
         networks:
             - app-network
         depends_on:
@@ -37,8 +46,8 @@ services:
 
     postgres:
         container_name: app-postgres
-        build: ./docker/postgres/
-        image: postgres:app
+        build: postgres
+        image: app:postgres
         restart: on-failure
         environment:
             - POSTGRES_PASSWORD=secret1S
