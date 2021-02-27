@@ -28,6 +28,3 @@ services:
             - $HOME/.composer/cache:/home/dev/.composer/cache
         networks:
             - app-network
-
-volumes:
-    php_dev_archive_volume:
