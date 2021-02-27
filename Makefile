@@ -11,7 +11,6 @@ up:
 	@make down
 	@make build
 	$(docker-compose) up -d --remove-orphans
-	$(php-cli-compose) up -d
 
 down:
 	$(docker-compose) down
