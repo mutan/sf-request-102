@@ -3,7 +3,7 @@
 dockerdir := docker
 docker-compose := docker-compose --env-file=$(dockerdir)/.env -f $(dockerdir)/docker-compose.yml
 php-cli-compose := docker-compose --env-file=$(dockerdir)/.env -f $(dockerdir)/php-cli-docker-compose.yml
-php-cli-compose-run := $(php-cli-compose) run --rm php-cli
+php-cli-compose-run := $(php-cli-compose) run --rm --name=app-php-cli php-cli
 
 default:
 	@echo "make up"

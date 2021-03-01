@@ -30,16 +30,16 @@ RUN apt-get update && apt-get install -y --no-install-recommends git wget sudo u
 # Add User
 ARG PUID
 ARG PGID
-ARG USER=dev
+ARG NAME=webmaster
 
 RUN set -xe; \
-    groupadd -g ${PGID} dev && \
-    useradd -l -u ${PUID} -g dev -m ${USER} -G sudo && \
-    usermod ${USER} -s /bin/bash
+    groupadd -g ${PGID} ${NAME} && \
+    useradd -l -u ${PUID} -g ${NAME} -m ${NAME} -G sudo && \
+    usermod ${NAME} -s /bin/bash
 
-RUN echo "${USER} ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+RUN echo "${NAME} ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
-USER ${USER}
+USER ${NAME}
 
 # Gihub token
 #ARG GITHUB_TOKEN
