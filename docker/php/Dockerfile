@@ -49,8 +49,7 @@ USER ${USER}
 RUN wget https://get.symfony.com/cli/installer -O - | sudo bash && sudo mv /root/.symfony/bin/symfony /usr/local/bin/symfony
 
 # PHP settings
-COPY docker/php/php.ini /usr/local/etc/php/php.ini
-COPY docker/php/conf.d/ /usr/local/etc/php/conf.d
+RUN sudo mv "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/php.ini"
 
 EXPOSE 9000
 

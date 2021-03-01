@@ -19,7 +19,6 @@ up:
 
 down:
 	$(docker-compose) down
-	$(php-cli-compose) down
 
 build:
 	$(docker-compose) build

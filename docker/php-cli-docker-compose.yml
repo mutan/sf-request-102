@@ -24,7 +24,7 @@ services:
         working_dir: /srv
         volumes:
             - ..:/srv
-            - ./php/php.ini:/usr/local/etc/php/conf.d/zz-overrides.ini
+            - ./php/php-ini-overrides.ini:/usr/local/etc/php/conf.d/zz-overrides.ini
             - $HOME/.composer/cache:/home/dev/.composer/cache
         networks:
             - app-network

@@ -8,7 +8,8 @@
 2) cli interpreter
 3) Command Line Tool Support
 4)
-docker - php.ini, xdebug,
+docker - 
 имя пользователя поменять с dev на что-нибудь другое
 мб сделать сеть для php-cli - external
 tests
+app_dev
