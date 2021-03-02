@@ -1,22 +1,28 @@
-Settings - Languages & Frameworks - PHP - CLI Interpreter - кнопка с тремя точками
+## Tests
 
-В открывшемся окне CLI Interpreter - синий плюс - From Docker...
+### Настройка тестов в PhpStorm
 
-В открывшемся окне Configure Remote PHP Interpreter - выбираем Docker Compose
+1. CLI Interpreter
+   
+Settings - Languages & Frameworks - PHP - CLI Interpreter - нажать кнопку с тремя точками.
 
-    Server - New - Unix Socket - ждем, пока появится надпись Connection Successful - Ok
+В открывшемся окне CLI Interpreter - нажать синий плюс - From Docker...
 
-    Configuration file - /docker/php-cli-docker-compose.yml
+В открывшемся окне Configure Remote PHP Interpreter:
+  * Выбираем Docker Compose
+  * Server - New - Unix Socket - ждем, пока появится надпись Connection Successful - Ok
+  * Configuration file - /docker/php-cli-docker-compose.yml
+  * Service - php-cli - Ok
+  * Ждем, пока PhpStorm закончит настройку
 
-    Service - php-cli - Ok
+2. PHPUnit
 
-    Ждем, пока PhpStorm закончит настройку
+Settings - Languages & Frameworks - PHP - Test Frameworks - синий плюс - PHPUnit by Remote Interpreter - выбираем php-cli.
 
-Settings - Languages & Frameworks - PHP - Test Frameworks - синий плюс - PHPUnit by Remote Interpreter - выбираем php-cli
-
-В открывшемся окне - выбираем опцию Path to phpunit.phar - в поле Path to phpunit.phar пишем /srv/bin/phpunit - нажать на иконку Reload phpinfo, дождаться сообщения об успехе
-
-    Default configuration file - /srv/phpunit.xml.dist
-
+В открывшемся окне:
+  * выбираем опцию Path to phpunit.phar
+  * в поле Path to phpunit.phar пишем /srv/bin/phpunit
+  * нажимаем на иконку Reload phpinfo, дожидаемся сообщения об успехе
+  * Default configuration file - /srv/phpunit.xml.dist
 
 Можно запускать тесты.
