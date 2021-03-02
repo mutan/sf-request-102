@@ -46,7 +46,8 @@ USER ${NAME}
 #RUN composer config --global --auth github-oauth.github.com ${GITHUB_TOKEN}
 
 # Symfony CLI
-RUN wget https://get.symfony.com/cli/installer -O - | sudo bash && sudo mv /root/.symfony/bin/symfony /usr/local/bin/symfony
+RUN wget https://get.symfony.com/cli/installer -O - | \
+    sudo bash && sudo mv /root/.symfony/bin/symfony /usr/local/bin/symfony
 
 # PHP settings
 RUN sudo mv "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/php.ini"

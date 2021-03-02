@@ -4,6 +4,12 @@ networks:
     app-network:
         name: app-network
 
+volumes:
+    app_postgresql_data:
+        name: app_db_postgresql
+    app_mysql_data:
+        name: app_mysql_data
+
 services:
 
     nginx:
@@ -58,6 +64,8 @@ services:
             - POSTGRES_USER_PASSWORD=$POSTGRES_USER_PASSWORD
         ports:
             - ${POSTGRES_EXTERNAL_PORT}:5432
+        volumes:
+            - app_postgresql_data:/var/lib/postgresql/data
         networks:
             - app-network
 
@@ -73,6 +81,8 @@ services:
             MYSQL_PASSWORD: $MYSQL_PASSWORD
         ports:
             - ${MYSQL_EXTERNAL_PORT}:3306
+        volumes:
+            - app_mysql_data:/var/lib/mysql
         networks:
             - app-network
 
