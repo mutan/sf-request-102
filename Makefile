@@ -1,7 +1,7 @@
 .DEFAULT_GOAL := default
 
 # Mark targets that do not represent physical files in the file system
-.PHONY: default run up down build rebuild logs migrate
+.PHONY: default run up down build rebuild logs migrate tests
 
 # Define constants
 dockerdir := docker
@@ -38,3 +38,6 @@ logs:
 
 migrate:
 	$(php-cli-compose-run) bin/console doctrine:migrations:migrate --no-interaction
+
+tests:
+	$(php-cli-compose-run) bin/phpunit --testdox
