@@ -16,7 +16,8 @@ class TokenGeneratorService
     public const CHAR_SPECIAL = 8;
 
     /**
-     * Generate string consisted of only lowercase, uppercase characters and numbers.
+     * Generate arbitrary length string consisted of
+     * only lowercase, uppercase characters and numbers.
      *
      * @param int $length
      *
@@ -62,15 +63,7 @@ class TokenGeneratorService
     }
 
     /**
-     * @param int $length
-     * @param $lower
-     * @param $upper
-     * @param $numeric
-     * @param $special
-     *
      * @throws Exception
-     *
-     * @return string
      */
     public function getCustomPassword(int $length, int $lower, int $upper, int $numeric, int $special): string
     {
@@ -115,7 +108,7 @@ class TokenGeneratorService
      *
      * @return string
      */
-    public function getCustomToken(int $length, $flags): string
+    private function getCustomToken(int $length, $flags): string
     {
         $token = '';
         $characters = $this->getCharacters($flags);
