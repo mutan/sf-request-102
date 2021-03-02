@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a97c4225cf4ad0f02a4f3d9de5c9157e",
+    "content-hash": "8abd50d51f610eecd6889e8a2a175fee",
     "packages": [
         {
             "name": "composer/package-versions-deprecated",
@@ -7721,37 +7721,6 @@
             "time": "2021-01-26T00:22:21+00:00"
         },
         {
-            "name": "mutan/docker-for-sf",
-            "version": "1.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/mutan/docker-for-sf.git",
-                "reference": "ff6b4db11486b9bf947c507bf5a0b2832e37fc87"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/mutan/docker-for-sf/zipball/ff6b4db11486b9bf947c507bf5a0b2832e37fc87",
-                "reference": "ff6b4db11486b9bf947c507bf5a0b2832e37fc87",
-                "shasum": ""
-            },
-            "type": "library",
-            "license": [
-                "MIT License"
-            ],
-            "authors": [
-                {
-                    "name": "Akim Gubanov",
-                    "email": "akim.gubanov@gmail.com"
-                }
-            ],
-            "description": "Docker compose for fast local dev environment",
-            "support": {
-                "source": "https://github.com/mutan/docker-for-sf/tree/1.3",
-                "issues": "https://github.com/mutan/docker-for-sf/issues"
-            },
-            "time": "2020-12-10T11:25:58+00:00"
-        },
-        {
             "name": "nikic/php-parser",
             "version": "v4.10.4",
             "source": {
@@ -8474,7 +8443,7 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=7.2.5",
+        "php": ">=7.4",
         "ext-ctype": "*",
         "ext-iconv": "*"
     },
