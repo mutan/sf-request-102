@@ -17,23 +17,23 @@ return $config
         '@PHP71Migration' => true,
         'array_indentation' => true,
         'array_syntax' => [
-            'syntax' => 'short'
+            'syntax' => 'short',
         ],
         'class_attributes_separation' => [
             'elements' => [
                 'method' => 'one',
-                'property' => 'one'
-            ]
+                'property' => 'one',
+            ],
         ],
         'declare_strict_types' => true,
         'dir_constant' => true,
         'list_syntax' => [
-            'syntax' => 'short'
+            'syntax' => 'short',
         ],
         'no_superfluous_phpdoc_tags' => false,
         'no_useless_else' => true,
         'phpdoc_align' => [
-            'align' => 'left'
+            'align' => 'left',
         ],
         'phpdoc_order' => true,
         'protected_to_private' => false,
