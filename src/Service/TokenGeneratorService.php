@@ -23,6 +23,7 @@ class TokenGeneratorService
      */
     public function getToken(int $length): string
     {
+        // $a | $b - устанавливаются те биты, которые установлены в $a или в $b
         return $this->getCustomToken($length, self::CHAR_LOWER | self::CHAR_UPPER | self::CHAR_NUMERIC);
     }
 
@@ -89,14 +90,9 @@ class TokenGeneratorService
     }
 
     /**
-     * @param int $length
-     * @param $flags
-     *
      * @throws Exception
-     *
-     * @return string
      */
-    public function getCustomToken(int $length, $flags): string
+    public function getCustomToken(int $length, int $flags): string
     {
         $token = '';
         $characters = $this->getCharacters($flags);
@@ -107,9 +103,13 @@ class TokenGeneratorService
         return $token;
     }
 
-    private function getCharacters($flags): string
+    private function getCharacters(int $flags): string
     {
         $characters = '';
+
+        // $a & $b - устанавливаются только те биты,
+        // которые установлены и в $a, и в $b.
+
         if ($flags & self::CHAR_LOWER) {
             $characters .= 'abcdefghijklmnopqrstuvwxyz';
         }
