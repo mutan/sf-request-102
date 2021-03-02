@@ -19,11 +19,7 @@ class TokenGeneratorService
      * Generate arbitrary length string consisted of
      * only lowercase, uppercase characters and numbers.
      *
-     * @param int $length
-     *
      * @throws Exception
-     *
-     * @return string
      */
     public function getToken(int $length): string
     {
@@ -33,11 +29,7 @@ class TokenGeneratorService
     /**
      * Generate string consisted of only hexadecimal characters [0-9a-f].
      *
-     * @param int $length
-     *
      * @throws Exception
-     *
-     * @return string
      */
     public function getHexadecimalToken(int $length = 10): string
     {
@@ -51,11 +43,7 @@ class TokenGeneratorService
     /**
      * Generate password consisted of minimum one of each characters: lowercase, uppercase and number.
      *
-     * @param int $length
-     *
      * @throws Exception
-     *
-     * @return string
      */
     public function getPassword(int $length): string
     {
@@ -108,7 +96,7 @@ class TokenGeneratorService
      *
      * @return string
      */
-    private function getCustomToken(int $length, $flags): string
+    public function getCustomToken(int $length, $flags): string
     {
         $token = '';
         $characters = $this->getCharacters($flags);
