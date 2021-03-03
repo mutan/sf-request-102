@@ -5,3 +5,5 @@
 ***
 
 - From mutan/sf-request-101
+- CRUD Warehouse
+- REST Api Warehouse
