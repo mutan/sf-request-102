@@ -19,12 +19,6 @@ RUN install-php-extensions zip gd exif intl memcached opcache pcntl pdo_pgsql pg
 
 # Install packages
 RUN apt-get update && apt-get install -y --no-install-recommends git wget sudo unzip \
-        zlib1g-dev \
-        libxml2-dev \
-        libzip-dev \
-        libicu-dev \
-        libpng-dev \
-        libpq-dev \
     && rm -rf /var/lib/apt/lists/*
 
 # Add User
@@ -45,7 +39,7 @@ USER ${NAME}
 #ARG GITHUB_TOKEN
 #RUN composer config --global --auth github-oauth.github.com ${GITHUB_TOKEN}
 
-# Symfony CLI
+# Install Symfony CLI
 RUN wget https://get.symfony.com/cli/installer -O - | \
     sudo bash && sudo mv /root/.symfony/bin/symfony /usr/local/bin/symfony
 
