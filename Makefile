@@ -41,3 +41,9 @@ migrate:
 
 tests:
 	$(php-cli-compose-run) bin/phpunit --testdox
+
+unit:
+	$(php-cli-compose-run) bin/phpunit --testdox --testsuite "Unit Test Suite"
+
+functional:
+	$(php-cli-compose-run) bin/phpunit --testdox --testsuite "Functional Test Suite"
