@@ -47,3 +47,6 @@ unit:
 
 functional:
 	$(php-cli-compose-run) bin/phpunit --testdox --testsuite "Functional Test Suite"
+
+style:
+	$(php-cli-compose-run) vendor/bin/php-cs-fixer fix -vvv
