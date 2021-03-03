@@ -1,8 +1,7 @@
 
-* [PHP CS Fixer](doc/cs-fixer.md)
-* [Tests](doc/tests.md)
+* [Настройка PHP-CS-Fixer](doc/fixer.md)
+* [Настройка PhpStorm](doc/phpstorm.md)
 
 ***
 
 - From mutan/sf-request-101
-- 

@@ -1,8 +1,6 @@
-## Tests
+## Настройка PhpStorm
 
-### Настройка тестов в PhpStorm
-
-#### 1. CLI Interpreter
+### 1. CLI Interpreter
    
 Settings - Languages & Frameworks - PHP - CLI Interpreter - нажмите на кнопку с тремя точками.
 
@@ -15,7 +13,7 @@ Settings - Languages & Frameworks - PHP - CLI Interpreter - нажмите на 
   * Service - php-cli
   * Нажмите Ok, подождите, пока PhpStorm закончит настройку
 
-#### 2. PHPUnit
+### 2. PHPUnit
 
 Settings - Languages & Frameworks - PHP - Test Frameworks - нажмите на синий плюс - PHPUnit by Remote Interpreter - выберите php-cli - Ок.
 
@@ -28,7 +26,7 @@ Settings - Languages & Frameworks - PHP - Test Frameworks - нажмите на 
 
 Можно запускать тесты.
 
-#### 3. Command Line Tool Support
+### 3. Command Line Tool
 
 Settings - Tools - Command Line Tool Support - нажмите на синий плюс.
 
