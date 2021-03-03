@@ -96,7 +96,7 @@ class TokenGeneratorService
     {
         $token = '';
         $characters = $this->getCharacters($flags);
-        for ($i = 0; $i < $length; ++$i) {
+        for ($i = 0; $i < $length; $i++) {
             $token .= $characters[random_int(0, \strlen($characters) - 1)];
         }
 
