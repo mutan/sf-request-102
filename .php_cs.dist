@@ -27,6 +27,9 @@ return $config
         ],
         'declare_strict_types' => true,
         'dir_constant' => true,
+        'increment_style' => [
+            'style' => 'post',
+        ],
         'list_syntax' => [
             'syntax' => 'short',
         ],
