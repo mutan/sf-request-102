@@ -13,9 +13,9 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 
 class TestCommand extends Command
 {
-    protected static string $defaultName = 'app:test';
+    protected static $defaultName = 'app:test';
 
-    protected static string $defaultDescription = 'Add a short description for your command';
+    protected static $defaultDescription = 'Add a short description for your command';
 
     protected function configure(): void
     {
@@ -28,7 +28,6 @@ class TestCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-
         $io = new SymfonyStyle($input, $output);
         $arg1 = $input->getArgument('arg1');
 
