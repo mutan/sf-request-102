@@ -1,7 +1,9 @@
 .DEFAULT_GOAL := default
 
 # Mark targets that do not represent physical files in the file system
-.PHONY: default run up down build rebuild logs migrate tests
+.PHONY: default run
+.PHONY: up down build rebuild logs
+.PHONY: migrate tests unit functional style
 
 # Define constants
 dockerdir := docker
