@@ -23,9 +23,8 @@ help:
 		awk 'BEGIN {FS = ": ## "}; {printf "\033[32m%-15s\033[0m %s\n", $$1, $$2}' | \
 		sed -e 's/\[32m## /[33m/'
 
-##
 ## Docker main containers
-##
+
 up: ## Down, then build and up main containers
 	@make down
 	@make build
@@ -45,9 +44,7 @@ rebuild: ## Pull images and rebuild main containers without using cache
 logs: ## See docker-compose logs
 	$(docker-compose) logs -f
 
-##
 ## Docker php-cli container
-##
 
 run: ## Run commands inside php-cli container. Example: make run bash OR make run bin/console make:migration
 	@$(php-cli-compose-run) $(filter-out $@, $(MAKECMDGOALS))
