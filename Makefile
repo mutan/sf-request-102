@@ -12,18 +12,20 @@ php-cli-compose := docker-compose --env-file=$(dockerdir)/.env -f $(dockerdir)/p
 php-cli-compose-run := $(php-cli-compose) run --rm --name=app-php-cli php-cli
 
 # Some explanations
-# To escape a dollar sign in a makefile, you have to double it.
-# \033[32 green color.
-# \033[0m reset color.
+# To escape a dollar sign $ in a makefile, you have to double it
+# %-30s minus indicates left alignment, 30 is the "field width"
+# \033[32m green color
+# \033[33m yellow color
+# \033[0m reset color
 help:
 	@tail -n +2 $(MAKEFILE_LIST) | \
 		grep -E '(^##)|(^[a-zA-Z_-]+:\s+##.*$$)' | \
-		awk 'BEGIN {FS = ": ## "}; {printf "\033[32m%-30s\033[0m %s\n", $$1, $$2}' | \
-		sed -e 's/\[32m##/[33m/'
+		awk 'BEGIN {FS = ": ## "}; {printf "\033[32m%-15s\033[0m %s\n", $$1, $$2}' | \
+		sed -e 's/\[32m## /[33m/'
 
 ##
 ## Docker main containers
-
+##
 up: ## Down, then build and up main containers
 	@make down
 	@make build
@@ -43,8 +45,9 @@ rebuild: ## Pull images and rebuild main containers without using cache
 logs: ## See docker-compose logs
 	$(docker-compose) logs -f
 
+##
 ## Docker php-cli container
-## ------------------------------
+##
 
 run: ## Run commands inside php-cli container. Example: make run bash OR make run bin/console make:migration
 	@$(php-cli-compose-run) $(filter-out $@, $(MAKECMDGOALS))
@@ -52,9 +55,8 @@ run: ## Run commands inside php-cli container. Example: make run bash OR make ru
 migrate: ## Migrate
 	$(php-cli-compose-run) bin/console doctrine:migrations:migrate --no-interaction
 
-##
 ## Tests and style
-## -------
+
 tests: ## Run all tests in project
 	$(php-cli-compose-run) bin/phpunit --testdox
 
