@@ -11,9 +11,13 @@ docker-compose := docker-compose --env-file=$(dockerdir)/.env -f $(dockerdir)/do
 php-cli-compose := docker-compose --env-file=$(dockerdir)/.env -f $(dockerdir)/php-cli-docker-compose.yml
 php-cli-compose-run := $(php-cli-compose) run --rm --name=app-php-cli php-cli
 
+# Some explanations
+# To escape a dollar sign in a makefile, you have to double it.
+# \033[32 green color.
+# \033[0m reset color.
 help:
 	@tail -n +2 $(MAKEFILE_LIST) | \
-		grep -E '(^[a-zA-Z_-]+:.*?##.*$$)|(^##)' | \
+		grep -E '(^##)|(^[a-zA-Z_-]+:\s+##.*$$)' | \
 		awk 'BEGIN {FS = ":.*?## "}; {printf "\033[32m%-30s\033[0m %s\n", $$1, $$2}' | \
 		sed -e 's/\[32m##/[33m/'
 
