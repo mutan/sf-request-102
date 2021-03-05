@@ -18,7 +18,7 @@ php-cli-compose-run := $(php-cli-compose) run --rm --name=app-php-cli php-cli
 help:
 	@tail -n +2 $(MAKEFILE_LIST) | \
 		grep -E '(^##)|(^[a-zA-Z_-]+:\s+##.*$$)' | \
-		awk 'BEGIN {FS = ":.*?## "}; {printf "\033[32m%-30s\033[0m %s\n", $$1, $$2}' | \
+		awk 'BEGIN {FS = ": ## "}; {printf "\033[32m%-30s\033[0m %s\n", $$1, $$2}' | \
 		sed -e 's/\[32m##/[33m/'
 
 ##
