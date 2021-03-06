@@ -88,7 +88,7 @@ services:
 
     adminer:
         container_name: app-adminer
-        image: adminer:4.7.7-standalone
+        image: adminer:4.8.0-standalone
         restart: always
         ports:
             - ${ADMINER_EXTERNAL_PORT}:8080
