@@ -4,10 +4,16 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\WarehouseRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
+ * @ApiResource(
+ *     collectionOperations={"GET", "POST"},
+ *     itemOperations={"GET", "PUT"},
+ *     shortName="Warehouse"
+ * )
  * @ORM\Entity(repositoryClass=WarehouseRepository::class)
  * @ORM\Table(options={"comment": "Склады"})
  */
@@ -21,6 +27,8 @@ class Warehouse
     private $id;
 
     /**
+     * Unique text code of warehouse
+     *
      * @ORM\Column(type="string", length=255, unique=true, options={"comment": "Код склада"})
      */
     private $code;
