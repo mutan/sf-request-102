@@ -21,7 +21,7 @@ help:
 	@tail -n +2 $(MAKEFILE_LIST) | \
 		grep -E '(^##)|(^[a-zA-Z_-]+:\s+##.*$$)' | \
 		awk 'BEGIN {FS = ": ## "}; {printf "\033[32m%-15s\033[0m %s\n", $$1, $$2}' | \
-		sed -e 's/\[32m## /[33m/'
+		sed -e 's/\[32m## /[33m\n/'
 
 ## Docker main containers
 
