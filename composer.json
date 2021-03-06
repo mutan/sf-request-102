@@ -1,6 +1,8 @@
 {
+    "name": "mutan/sf-request-102",
+    "description": "Just for test various techs",
     "type": "project",
-    "license": "proprietary",
+    "license": "MIT",
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {

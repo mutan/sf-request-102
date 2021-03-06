@@ -1,6 +1,7 @@
 
 * [Настройка PHP-CS-Fixer](doc/fixer.md)
 * [Настройка PhpStorm](doc/phpstorm.md)
+* [Composer.json explanation](doc/composer.md)
 
 ***
 
@@ -8,5 +9,4 @@
 - CRUD Warehouse
 - REST Api Warehouse
 
-- make help
 - make restore_db
