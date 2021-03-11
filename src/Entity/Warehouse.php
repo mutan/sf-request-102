@@ -24,24 +24,24 @@ class Warehouse
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private int $id;
 
     /**
      * Unique text code of warehouse
      *
      * @ORM\Column(type="string", length=255, unique=true, options={"comment": "Код склада"})
      */
-    private $code;
+    private string $code;
 
     /**
      * @ORM\Column(type="string", length=255, options={"comment": "Название склада"})
      */
-    private $name;
+    private string $name;
 
     /**
      * @ORM\Column(type="boolean", options={"default" : true})
      */
-    private $active;
+    private bool $active;
 
     public function getId(): ?int
     {
