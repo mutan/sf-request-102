@@ -12,14 +12,19 @@ class WarehouseFixture extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
-        $warehouse = new Warehouse();
-        $warehouse->setCode('msk')
-            ->setName('Москва Зюзино')
-            ->setActive(true);
+        $data = [
+            ['msk-dom', 'Москва Домодедово'],
+            ['msk-she', 'Москва Шереметьево'],
+            ['msk-zhu', 'Москва Жуковский'],
+        ];
 
-        rand(1, 10);
-
-        $manager->persist($warehouse);
+        foreach ($data as $item) {
+            $warehouse = (new Warehouse())
+                ->setCode($item[0])
+                ->setName($item[1])
+                ->setActive(true);
+            $manager->persist($warehouse);
+        }
 
         $manager->flush();
     }
