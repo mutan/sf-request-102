@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Service\Api;
 
-use App\Dto\NFLTeam\NFLTeamApiRequest;
 use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\DecodingExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
@@ -18,7 +17,7 @@ class SportsdataApiService
 
     private HttpClientInterface $httpClient;
 
-    private $apiKey;
+    private string $apiKey;
 
     public function __construct(HttpClientInterface $httpClient, $apiKey)
     {

@@ -46,7 +46,7 @@ class TestCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $this->NFLTeamManager->updateByApi();
+        $this->NFLTeamManager->updateTeamListByApi();
 
         dd(123);
 

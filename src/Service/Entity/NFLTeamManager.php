@@ -43,14 +43,32 @@ class NFLTeamManager
      * @throws ServerExceptionInterface
      * @throws TransportExceptionInterface
      */
-    public function updateByApi(): void
+    public function updateTeamListByApi(): void
     {
         $data = $this->api->fetchNFLTeams();
+        $teamMap = $this->getTeamMap();
 
         foreach ($data as $item) {
-            $NFLTeam = $this->factory->createEntityFromArray($item);
+            if (isset($teamMap[$item['TeamID']])) {
+                $NFLTeam = $this->factory->updateEntityFromArray($teamMap[$item['TeamID']], $item);
+            } else {
+                $NFLTeam = $this->factory->createEntityFromArray($item);
+            }
+
             $this->em->persist($NFLTeam);
         }
         $this->em->flush();
+    }
+
+    private function getTeamMap(): array
+    {
+        $teamMap = [];
+        $teams = $this->repository->findAll();
+
+        foreach ($teams as $team) {
+            $teamMap[$team->getTeamId()] = $team;
+        }
+
+        return $teamMap;
     }
 }
