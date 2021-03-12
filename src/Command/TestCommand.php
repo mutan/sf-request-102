@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Command;
 
+use App\Service\Api\SportsdataApiService;
+use App\Service\Entity\NFLTeamManager;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -17,6 +19,16 @@ class TestCommand extends Command
 
     protected static $defaultDescription = 'Add a short description for your command';
 
+    /**
+     * @var SportsdataApiService
+     */
+    private SportsdataApiService $sportsdataApiService;
+
+    /**
+     * @var NFLTeamManager
+     */
+    private NFLTeamManager $NFLTeamManager;
+
     protected function configure(): void
     {
         $this
@@ -26,8 +38,18 @@ class TestCommand extends Command
         ;
     }
 
+    public function __construct(NFLTeamManager $NFLTeamManager)
+    {
+        parent::__construct();
+        $this->NFLTeamManager = $NFLTeamManager;
+    }
+
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
+        $this->NFLTeamManager->updateByApi();
+
+        dd(123);
+
         $io = new SymfonyStyle($input, $output);
         $arg1 = $input->getArgument('arg1');
 
