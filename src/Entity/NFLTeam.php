@@ -26,7 +26,7 @@ class NFLTeam
     private string $key;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", unique=true)
      */
     private int $teamId;
 
