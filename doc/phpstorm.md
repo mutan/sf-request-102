@@ -41,3 +41,11 @@ Settings - Tools - Command Line Tool Support - нажмите на синий п
   * Нажмите Ок
 
 Теперь можно нажать Ctrl два раза, в появившемся окне набрать `console`, и далее набрать или выбрать из списка нужную команду.
+
+### 4. Inspections
+
+Editor - Inspections - PHP - PHPDoc
+
+  * Missing @return tag
+    * check Ignore PHPDoc without @param
+    * check Ignore PHPDoc with return type hint
