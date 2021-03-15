@@ -7,6 +7,7 @@ namespace App\Service\Entity;
 use App\Factory\NFLTeamFactory;
 use App\Repository\NFLTeamRepository;
 use App\Service\Api\SportsdataApiService;
+use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 use Psr\Cache\CacheItemPoolInterface;
 use Psr\Cache\InvalidArgumentException;
@@ -84,7 +85,7 @@ class NFLTeamManager
                 $teamsMap[$team->getTeamId()] = $team;
             }
 
-            $item->set($teamsMap);
+            $item->set($teamsMap)->expiresAt(new DateTime('+1 hour'));
             $this->cachePool->save($item);
         }
 
