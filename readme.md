@@ -6,7 +6,7 @@
 ***
 
 - From mutan/sf-request-101
-- CRUD Warehouse
+- CRUD Warehouse + bootstrap modals
 - REST Api Warehouse
 
 - make restore_db

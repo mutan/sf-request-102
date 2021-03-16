@@ -60,12 +60,12 @@ class NFLTeamManager
 
         foreach ($data as $item) {
             if (isset($teamsMap[$item['TeamID']])) {
-                $NFLTeam = $this->factory->updateEntityFromArray($teamsMap[$item['TeamID']], $item);
+                $this->factory->updateEntityFromArray($teamsMap[$item['TeamID']], $item);
+                $this->em->persist($teamsMap[$item['TeamID']]);
             } else {
                 $NFLTeam = $this->factory->createEntityFromArray($item);
+                $this->em->persist($NFLTeam);
             }
-
-            $this->em->persist($NFLTeam);
         }
         $this->em->flush();
     }
