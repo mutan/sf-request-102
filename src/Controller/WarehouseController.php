@@ -51,7 +51,7 @@ class WarehouseController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="warehouse_show", methods={"GET"})
+     * @Route("/{id}", name="warehouse_show", methods={"GET"}, requirements={"id"="\d+"})
      */
     public function show(Warehouse $warehouse): Response
     {
@@ -95,7 +95,7 @@ class WarehouseController extends AbstractController
     }
 
     /**
-     * @Route("/list", name="warehouse_list", methods={"GET"})
+     * @Route("/list-json", name="warehouse_list_json", methods={"GET"})
      */
     public function list(): Response
     {

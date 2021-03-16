@@ -1,11 +1,18 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Warehouse{% endblock %}
+{% block title %}Создать{% endblock %}
 
 {% block body %}
-    <h1>Create new Warehouse</h1>
+    <h1>Создать склад</h1>
+    <hr>
 
     {{ include('warehouse/_form.html.twig') }}
 
-    <a href="{{ path('warehouse_index') }}">back to list</a>
+    <div class="row">
+        <div class="offset-md-3 col-md-6 g-3 text-center">
+            <a href="{{ path('warehouse_index') }}" role="button" class="btn btn-primary btn-sm">
+                <i class="fas fa-list"></i> Список складов
+            </a>
+        </div>
+    </div>
 {% endblock %}

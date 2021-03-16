@@ -1,4 +1,28 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_start(form, {'attr': {'class': 'row g-3'}}) }}
+
+<div class="offset-md-3 col-md-6">
+    {{ form_label(form.code, 'Код', {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.code, {'attr': {'class': 'form-control form-control-sm'}}) }}
+</div>
+
+<div class="offset-md-3 col-md-6">
+    {{ form_label(form.name, 'Название') }}
+    {{ form_widget(form.name, {'attr': {'class': 'form-control form-control-sm'}}) }}
+</div>
+
+<div class="offset-md-3 col-md-6">
+    <div class="form-check">
+    {{ form_widget(form.active, {'attr': {'class': 'form-check-input'}}) }}
+    {{ form_label(form.active, 'Активен', {'label_attr': {'class': 'form-check-label'}}) }}
+    </div>
+</div>
+
+<div class="offset-md-3 col-md-6">
+    <div class="d-grid gap-2">
+        <button class="btn btn- btn-primary btn-sm">
+            <i class="fas fa-save"></i> {{ button_label|default('Сохранить') }}
+        </button>
+    </div>
+</div>
+
 {{ form_end(form) }}
