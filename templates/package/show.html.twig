@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Посылка{% endblock %}
+
+{% block body %}
+    <h1>Посылка</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ package.id }}</td>
+            </tr>
+            <tr>
+                <th>Трекинг-номер</th>
+                <td>{{ package.tracking }}</td>
+            </tr>
+            <tr>
+                <th>Описание</th>
+                <td>{{ package.description }}</td>
+            </tr>
+            <tr>
+                <th>Вес</th>
+                <td>{{ package.weight }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('package_index') }}">Список посылок</a>
+
+    <a href="{{ path('package_edit', {'id': package.id}) }}">Редактировать</a>
+
+    {{ include('package/_delete_form.html.twig') }}
+{% endblock %}

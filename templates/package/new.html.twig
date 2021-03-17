@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Создать посылку{% endblock %}
+
+{% block body %}
+    <h1>Создать посылку</h1>
+
+    {{ include('package/_form.html.twig') }}
+
+    <a href="{{ path('package_index') }}">Список посылок</a>
+{% endblock %}
