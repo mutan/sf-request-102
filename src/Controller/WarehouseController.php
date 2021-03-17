@@ -8,6 +8,7 @@ use App\Entity\Warehouse;
 use App\Form\WarehouseType;
 use App\Repository\WarehouseRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -92,6 +93,22 @@ class WarehouseController extends AbstractController
         }
 
         return $this->redirectToRoute('warehouse_index');
+    }
+
+    /**
+     * @Route("/{id}/deactivate", name="warehouse_deactivate", methods={"POST"})
+     */
+    public function deactivate(Warehouse $warehouse): JsonResponse
+    {
+        $warehouse->setActive(false);
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->persist($warehouse);
+        $entityManager->flush();
+
+        $this->addFlash('success', "Склад {$warehouse->getCode()} деактивирован.");
+
+        return new JsonResponse(['message' => 'Success'], 200);
     }
 
     /**

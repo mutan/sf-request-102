@@ -3,12 +3,22 @@
 {% block title %}Список посылок{% endblock %}
 
 {% block body %}
-    <h1>Список посылок</h1>
+    <div class="row">
+        <div class="col-sm-12 ">
+            <h1>Список посылок
+                <button type="button" id="package_new" class="btn btn-sm btn-primary">
+                    <span style="white-space:nowrap;">
+                        <i class="fa fa-plus"></i> <span class="d-inline d-sm-inline pl-1">Создать</span>
+                    </span>
+                </button>
+            </h1>
+        </div>
+    </div>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
+                <th style="width:1%">Id</th>
                 <th>Трекинг-номер</th>
                 <th>Описание</th>
                 <th>Вес</th>
