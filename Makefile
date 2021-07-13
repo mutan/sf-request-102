@@ -1,3 +1,4 @@
+# Sets the default goal to be used if no targets were specified on the command line
 .DEFAULT_GOAL := help
 
 # Mark targets that do not represent physical files in the file system
