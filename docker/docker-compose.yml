@@ -6,7 +6,7 @@ networks:
 
 volumes:
     app_postgresql_data:
-        name: app_db_postgresql
+        name: app_postgresql_data
     app_mysql_data:
         name: app_mysql_data
 
